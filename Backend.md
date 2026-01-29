@@ -1,26 +1,18 @@
 # Backend
 
-## サーバーサイド言語
+サーバーサイド・データベース・API実装
 
-- [[PHP]]
-- [[Ruby]]
-- [[Rust]]
-- [[Go]]
+## [[ServerSideLanguages]]
+サーバーサイド言語
 
-## フレームワーク・ライブラリ
+## [[WebFrameworksBackend]]
+フレームワーク・ライブラリ
 
-- [[Ruby on Rails]]
+## [[Databases]]
+データベース
 
-## データベース
+## [[IntegratedEnvironments]]
+統合環境
 
-- [[MySQL]]
-- [[SQLite]]
-- [[database]]
-
-## 統合環境
-
-- [[XAMPP]]
-
-## バックエンドサービス
-
-- [[Firebase]]
+## [[BackendServices]]
+バックエンドサービス

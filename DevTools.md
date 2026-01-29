@@ -1,33 +1,16 @@
 # DevTools
 
-## バージョン管理
+## [[VersionControl]]
+バージョン管理ツール
 
-- [[git]]
-- [[GitHubDesktop]]
+## [[Editors_Commands]]
+エディタ・基本コマンド
 
-## エディタ・コマンド
+## [[ShellCommands]]
+シェルコマンド・スクリプト
 
-- [[vim]]
+## [[ProcessManagement]]
+プロセス管理・システム制御
 
-## シェルコマンド
-
-- [[curlコマンド]]
-- [[pingコマンド]]
-- [[tracerouteコマンド]]
-- [[ncコマンド]]
-- [[telnetコマンド]]
-- [[ssh]]
-- [[sudo]]
-- [[psコマンド]]
-- [[exportコマンド]]
-- [[Shell Script]]
-
-## プロセス管理
-
-- [[プロセス]]
-
-## その他
-
-- [[マクロ]]
-- [[Bluetooth]]
-- [[RD工房]]
+## [[ToolsUtilities]]
+その他ツール・ユーティリティ

@@ -1,30 +1,18 @@
 # Infrastructure
 
-## クラウドプラットフォーム
+クラウド・コンテナ・サーバーOS・仮想化
 
-- [[AWS]]
-- [[クラウドツール]]
+## [[CloudPlatforms]]
+クラウドプラットフォーム
 
-## コンテナ・環境
+## [[Containers_Environments]]
+コンテナ・実行環境
 
-- [[Docker]]
-- [[WSL]]
+## [[WebServers]]
+Webサーバー
 
-## Webサーバー
+## [[ServerManagement]]
+サーバー管理・運用
 
-- [[Apache HTTP Server]]
-- [[NGINX]]
-- [[LiteSpeed]]
-- [[サーバー]]
-
-## サーバー管理
-
-- [[VPS]]
-- [[ubuntuサーバー]]
-- [[プロキシサーバー]]
-- [[仮想ホスト]]
-
-## プロセス管理
-
-- [[screen]]
-- [[cron]]
+## [[ProcessControl]]
+プロセス管理・スケジューリング

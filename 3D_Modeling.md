@@ -1,6 +1,6 @@
-# 3D Modeling
+# 3D_Modeling
 
-## 3Dモデリング・デザイン
+3D・モデリング・CAD
 
-- [[Blender]]
-- [[Fusion360]]
+## [[ModelingTools]]
+3Dモデリング・デザイン

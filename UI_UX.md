@@ -1,6 +1,6 @@
-# UI/UX
+# UI_UX
 
-## デザインツール
+デザインツール・UI/UX
 
-- [[Figma]]
-- [[Canva]]
+## [[DesignTools]]
+デザインツール

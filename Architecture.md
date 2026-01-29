@@ -1,30 +1,18 @@
 # Architecture
 
-## アーキテクチャパターン
+ソフトウェア設計論・構造・パターン
 
-- [[アーキテクチャ]]
-- [[レイヤードアーキテクチャ]]
-- [[ヘキサゴナルアーキテクチャ]]
-- [[クリーンアーキテクチャ]]
+## [[ArchitecturePatterns]]
+アーキテクチャパターン
 
-## MV*パターン
+## [[MVPatterns]]
+MV*パターン
 
-- [[MVC (Model-View-Controller)]]
-- [[MVP (Model-View-Presenter)]]
-- [[MVVM (Model-View-ViewModel)]]
+## [[DesignMethodologies]]
+設計手法・パラダイム
 
-## 設計手法
+## [[DevelopmentProcesses]]
+開発手法・プロセス
 
-- [[ドメイン駆動設計]]
-
-## 開発手法・プロセス
-
-- [[アジャイル開発：現代のソフトウェア開発の主流手法]]
-- [[Continuous Integration]]
-- [[Continuous Delivery]]
-
-## 参考書籍
-
-- [[システム運用の基本と戦略(CyberAgent)]]
-- [[ソフトウェアテスト見積りガイドブック]]
-- [[高信頼化ソフトウェアのための開発手法ガイドブック]]
+## [[ReferenceBooks]]
+参考書籍・リソース
