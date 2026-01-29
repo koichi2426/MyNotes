@@ -2,4 +2,5 @@
 
 フレームワーク・ライブラリ
 
-- [[Ruby on Rails]]
+## [[RubyOnRails]]
+Ruby on Rails（Rails）は、Webアプリケーションを迅速かつ簡単に開発するためのオープンソースフレームワーク
