@@ -2,7 +2,7 @@
 
 ## [[Informatics]]
 Creating Value (価値を創る)
-領域: Theory, Engineering, Creative
+領域: Theory, Engineering, Creative, Tools
 
 ## [[Economics]]
 Delivering Value (価値を届ける)
