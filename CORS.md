@@ -429,6 +429,370 @@ config.middleware.insert_before 0, Rack::Cors do
 end
 ```
 
+## Apache設定集
+
+### default-ssl.conf（標準設定）
+
+```apache
+<VirtualHost *:443>
+    ServerName www.pagespeedmonitor.jp
+    DocumentRoot /home/ubuntu/UI_pagespeedinsights/build
+
+    SSLEngine on
+    SSLCertificateFile /etc/letsencrypt/live/www.pagespeedmonitor.jp/fullchain.pem
+    SSLCertificateKeyFile /etc/letsencrypt/live/www.pagespeedmonitor.jp/privkey.pem
+    SSLCertificateChainFile /etc/letsencrypt/live/www.pagespeedmonitor.jp/chain.pem
+
+    # CORSヘッダーの追加
+    <IfModule mod_headers.c>
+        Header always set Access-Control-Allow-Origin "https://www.pagespeedmonitor.jp"
+        Header always set Access-Control-Allow-Methods "GET, POST, OPTIONS, PUT, DELETE, PATCH"
+        Header always set Access-Control-Allow-Headers "Authorization, Content-Type"
+        Header always set Access-Control-Allow-Credentials "true"
+    </IfModule>
+
+    <Directory /home/ubuntu/UI_pagespeedinsights/build>
+        Options Indexes FollowSymLinks
+        AllowOverride All
+        Require all granted
+    </Directory>
+
+    # Railsアプリケーションへのプロキシ設定
+    ProxyPass /railsapp http://localhost:3001/
+    ProxyPassReverse /railsapp http://localhost:3001/
+
+    # Preflightリクエストを処理
+    <IfModule mod_rewrite.c>
+        RewriteEngine On
+        RewriteCond %{REQUEST_METHOD} OPTIONS
+        RewriteRule ^(.*)$ $1 [R=200,L]
+    </IfModule>
+
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+```
+
+### default-ssl.conf（localhost開発環境）
+
+```apache
+<VirtualHost *:443>
+    ServerName www.pagespeedmonitor.jp
+    DocumentRoot /home/ubuntu/UI_pagespeedinsights/build
+
+    SSLEngine on
+    SSLCertificateFile /etc/letsencrypt/live/www.pagespeedmonitor.jp/fullchain.pem
+    SSLCertificateKeyFile /etc/letsencrypt/live/www.pagespeedmonitor.jp/privkey.pem
+    SSLCertificateChainFile /etc/letsencrypt/live/www.pagespeedmonitor.jp/chain.pem
+
+    # CORSヘッダーの追加（開発環境用：localhost:3000のみ許可）
+    <IfModule mod_headers.c>
+        Header always set Access-Control-Allow-Origin "http://localhost:3000"
+        Header always set Access-Control-Allow-Methods "GET, POST, OPTIONS, PUT, DELETE, PATCH"
+        Header always set Access-Control-Allow-Headers "Authorization, Content-Type"
+        Header always set Access-Control-Allow-Credentials "true"
+    </IfModule>
+
+    <Directory /home/ubuntu/UI_pagespeedinsights/build>
+        Options Indexes FollowSymLinks
+        AllowOverride All
+        Require all granted
+    </Directory>
+
+    # Railsアプリケーションへのプロキシ設定
+    ProxyPass /railsapp http://localhost:3001/
+    ProxyPassReverse /railsapp http://localhost:3001/
+
+    # Preflightリクエストを処理
+    <IfModule mod_rewrite.c>
+        RewriteEngine On
+        RewriteCond %{REQUEST_METHOD} OPTIONS
+        RewriteRule ^(.*)$ $1 [R=200,L]
+    </IfModule>
+
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+```
+
+### default-ssl.conf（CORS無効）
+
+```apache
+<VirtualHost *:443>
+    ServerName www.pagespeedmonitor.jp
+    DocumentRoot /home/ubuntu/UI_pagespeedinsights/build
+
+    SSLEngine on
+    SSLCertificateFile /etc/letsencrypt/live/www.pagespeedmonitor.jp/fullchain.pem
+    SSLCertificateKeyFile /etc/letsencrypt/live/www.pagespeedmonitor.jp/privkey.pem
+    SSLCertificateChainFile /etc/letsencrypt/live/www.pagespeedmonitor.jp/chain.pem
+    
+    <Directory /home/ubuntu/UI_pagespeedinsights/build>
+        Options Indexes FollowSymLinks
+        AllowOverride All
+        Require all granted
+    </Directory>
+
+    # Railsアプリケーションへのプロキシ設定
+    ProxyPass /railsapp http://localhost:3001/
+    ProxyPassReverse /railsapp http://localhost:3001/
+
+    # Preflightリクエストを処理
+    <IfModule mod_rewrite.c>
+        RewriteEngine On
+        RewriteCond %{REQUEST_METHOD} OPTIONS
+        RewriteRule ^(.*)$ $1 [R=200,L]
+    </IfModule>
+
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+```
+
+### default-ssl.conf（ワイルドカード許可）
+
+```apache
+<VirtualHost *:443>
+    ServerName www.pagespeedmonitor.jp
+    DocumentRoot /home/ubuntu/UI_pagespeedinsights/build
+
+    SSLEngine on
+    SSLCertificateFile /etc/letsencrypt/live/www.pagespeedmonitor.jp/fullchain.pem
+    SSLCertificateKeyFile /etc/letsencrypt/live/www.pagespeedmonitor.jp/privkey.pem
+    SSLCertificateChainFile /etc/letsencrypt/live/www.pagespeedmonitor.jp/chain.pem
+
+    # CORSヘッダーの追加（注意：セキュリティ上は推奨されません）
+    <IfModule mod_headers.c>
+        Header always set Access-Control-Allow-Origin "*"
+        Header always set Access-Control-Allow-Methods "GET, POST, OPTIONS, PUT, DELETE, PATCH"
+        Header always set Access-Control-Allow-Headers "Authorization, Content-Type"
+        Header always set Access-Control-Allow-Credentials "true"
+    </IfModule>
+
+    <Directory /home/ubuntu/UI_pagespeedinsights/build>
+        Options Indexes FollowSymLinks
+        AllowOverride All
+        Require all granted
+    </Directory>
+
+    # Railsアプリケーションへのプロキシ設定
+    ProxyPass /railsapp http://localhost:3001/
+    ProxyPassReverse /railsapp http://localhost:3001/
+
+    # Preflightリクエストを処理
+    <IfModule mod_rewrite.c>
+        RewriteEngine On
+        RewriteCond %{REQUEST_METHOD} OPTIONS
+        RewriteRule ^(.*)$ $1 [R=200,L]
+    </IfModule>
+
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+```
+
+### rails_app.conf（HTTP→HTTPS統合設定）
+
+```apache
+<VirtualHost *:80>
+    ServerName www.pagespeedmonitor.jp
+    DocumentRoot /home/ubuntu/UI_pagespeedinsights/build
+
+    RewriteEngine On
+    RewriteCond %{HTTPS} off
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+
+<VirtualHost *:443>
+    ServerName www.pagespeedmonitor.jp
+    DocumentRoot /home/ubuntu/UI_pagespeedinsights/build
+
+    SSLEngine on
+    SSLCertificateFile /etc/letsencrypt/live/www.pagespeedmonitor.jp/fullchain.pem
+    SSLCertificateKeyFile /etc/letsencrypt/live/www.pagespeedmonitor.jp/privkey.pem
+    SSLCertificateChainFile /etc/letsencrypt/live/www.pagespeedmonitor.jp/chain.pem
+
+    <Directory /home/ubuntu/UI_pagespeedinsights/build>
+        Options Indexes FollowSymLinks
+        AllowOverride All
+        Require all granted
+    </Directory>
+
+    <IfModule mod_headers.c>
+        Header set Access-Control-Allow-Origin "https://www.pagespeedmonitor.jp"
+        Header set Access-Control-Allow-Methods "GET, POST, OPTIONS, PUT, DELETE, PATCH"
+        Header set Access-Control-Allow-Headers "Authorization, Content-Type"
+        Header set Access-Control-Allow-Credentials "true"
+    </IfModule>
+
+    ProxyPass /railsapp http://localhost:3001/
+    ProxyPassReverse /railsapp http://localhost:3001/
+
+    <IfModule mod_rewrite.c>
+        RewriteEngine On
+        RewriteCond %{REQUEST_METHOD} OPTIONS
+        RewriteRule ^(.*)$ $1 [R=200,L]
+    </IfModule>
+
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+```
+
+### rails_app.conf（localhost開発環境）
+
+```apache
+<VirtualHost *:80>
+    ServerName www.pagespeedmonitor.jp
+    DocumentRoot /home/ubuntu/UI_pagespeedinsights/build
+
+    RewriteEngine On
+    RewriteCond %{HTTPS} off
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+
+<VirtualHost *:443>
+    ServerName www.pagespeedmonitor.jp
+    DocumentRoot /home/ubuntu/UI_pagespeedinsights/build
+
+    SSLEngine on
+    SSLCertificateFile /etc/letsencrypt/live/www.pagespeedmonitor.jp/fullchain.pem
+    SSLCertificateKeyFile /etc/letsencrypt/live/www.pagespeedmonitor.jp/privkey.pem
+    SSLCertificateChainFile /etc/letsencrypt/live/www.pagespeedmonitor.jp/chain.pem
+
+    <Directory /home/ubuntu/UI_pagespeedinsights/build>
+        Options Indexes FollowSymLinks
+        AllowOverride All
+        Require all granted
+    </Directory>
+
+    <IfModule mod_headers.c>
+        Header set Access-Control-Allow-Origin "http://localhost:3000"
+        Header set Access-Control-Allow-Methods "GET, POST, OPTIONS, PUT, DELETE, PATCH"
+        Header set Access-Control-Allow-Headers "Authorization, Content-Type"
+        Header set Access-Control-Allow-Credentials "true"
+    </IfModule>
+
+    ProxyPass /railsapp http://localhost:3001/
+    ProxyPassReverse /railsapp http://localhost:3001/
+
+    <IfModule mod_rewrite.c>
+        RewriteEngine On
+        RewriteCond %{REQUEST_METHOD} OPTIONS
+        RewriteRule ^(.*)$ $1 [R=200,L]
+    </IfModule>
+
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+```
+
+### rails_app.conf（CORS無効）
+
+```apache
+<VirtualHost *:80>
+    ServerName www.pagespeedmonitor.jp
+    DocumentRoot /home/ubuntu/UI_pagespeedinsights/build
+
+    RewriteEngine On
+    RewriteCond %{HTTPS} off
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+
+<VirtualHost *:443>
+    ServerName www.pagespeedmonitor.jp
+    DocumentRoot /home/ubuntu/UI_pagespeedinsights/build
+
+    SSLEngine on
+    SSLCertificateFile /etc/letsencrypt/live/www.pagespeedmonitor.jp/fullchain.pem
+    SSLCertificateKeyFile /etc/letsencrypt/live/www.pagespeedmonitor.jp/privkey.pem
+    SSLCertificateChainFile /etc/letsencrypt/live/www.pagespeedmonitor.jp/chain.pem
+
+    <Directory /home/ubuntu/UI_pagespeedinsights/build>
+        Options Indexes FollowSymLinks
+        AllowOverride All
+        Require all granted
+    </Directory>
+
+    ProxyPass /railsapp http://localhost:3001/
+    ProxyPassReverse /railsapp http://localhost:3001/
+
+    <IfModule mod_rewrite.c>
+        RewriteEngine On
+        RewriteCond %{REQUEST_METHOD} OPTIONS
+        RewriteRule ^(.*)$ $1 [R=200,L]
+    </IfModule>
+
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+```
+
+### pagespeedmonitor.conf（統合設定ファイル）
+
+```apache
+<VirtualHost *:80>
+    ServerName www.pagespeedmonitor.jp
+    DocumentRoot /home/ubuntu/UI_pagespeedinsights/build
+
+    # HTTPをHTTPSにリダイレクト
+    RewriteEngine On
+    RewriteCond %{HTTPS} off
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+
+<VirtualHost *:443>
+    ServerName www.pagespeedmonitor.jp
+    DocumentRoot /home/ubuntu/UI_pagespeedinsights/build
+
+    # SSL設定
+    SSLEngine on
+    SSLCertificateFile /etc/letsencrypt/live/www.pagespeedmonitor.jp/fullchain.pem
+    SSLCertificateKeyFile /etc/letsencrypt/live/www.pagespeedmonitor.jp/privkey.pem
+    SSLCertificateChainFile /etc/letsencrypt/live/www.pagespeedmonitor.jp/chain.pem
+
+    # CORSヘッダーの追加
+    <IfModule mod_headers.c>
+        Header always set Access-Control-Allow-Origin "*"
+        Header always set Access-Control-Allow-Methods "GET, POST, OPTIONS, PUT, DELETE, PATCH"
+        Header always set Access-Control-Allow-Headers "Authorization, Content-Type"
+        Header always set Access-Control-Allow-Credentials "true"
+    </IfModule>
+
+    <Directory /home/ubuntu/UI_pagespeedinsights/build>
+        Options Indexes FollowSymLinks
+        AllowOverride All
+        Require all granted
+    </Directory>
+
+    # Railsアプリケーションへのプロキシ設定
+    ProxyPass /railsapp http://localhost:3001/
+    ProxyPassReverse /railsapp http://localhost:3001/
+
+    # Preflightリクエストを処理
+    <IfModule mod_rewrite.c>
+        RewriteEngine On
+        RewriteCond %{REQUEST_METHOD} OPTIONS
+        RewriteRule ^(.*)$ $1 [R=200,L]
+    </IfModule>
+
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+```
+
 ## 実装例
 
 ### 例1: localhost:3000 からのアクセスを許可
