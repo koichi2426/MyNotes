@@ -15,6 +15,6 @@
 - [[Security]]: Auth, SSL/TLS
 - [[Snippets]]: コード断片集
 
-## Log
+## Logfff
 - [[2026-01-29]]
 - [[Error_Log]]
