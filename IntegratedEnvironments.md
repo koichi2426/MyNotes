@@ -2,4 +2,5 @@
 
 統合環境
 
-- [[XAMPP]]
+## [[XAMPP]]
+Apache、MariaDB、PHP、Perlを含むクロスプラットフォームのWebサーバーパッケージ
