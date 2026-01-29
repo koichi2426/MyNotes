@@ -4,4 +4,4 @@ Webフレームワーク・ライブラリ
 
 - [[React]]
 - [[Redux]]
-- [[async/await]]
+- [[async_await]]
