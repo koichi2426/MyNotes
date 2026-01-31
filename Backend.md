@@ -1,5 +1,3 @@
-# Backend
-
 サーバーサイド・データベース・API実装
 
 ## [[ServerSideLanguages]]

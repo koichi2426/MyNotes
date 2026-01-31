@@ -1,5 +1,3 @@
-# Network
-
 通信プロトコル・セキュリティ・認証技術
 
 ## [[RemoteAccess]]
