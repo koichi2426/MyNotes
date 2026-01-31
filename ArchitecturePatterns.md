@@ -1,4 +1,4 @@
 - [[CleanArchitecture]]
 - [[HexagonalArchitecture]]
 - [[LayeredArchitecture]]
-- [[OnionArchitecture_]]
+- [[OnionArchitecture]]
