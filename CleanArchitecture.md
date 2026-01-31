@@ -743,7 +743,7 @@ public class CreateUserUseCase {
 ❌ リソース限定的
 ```
 
-## [[ヘキサゴナルアーキテクチャ]]との違い
+## [[HexagonalArchitecture]]との違い
 
 | 観点 | ヘキサゴナル | クリーン |
 |-----|-----------|--------|
