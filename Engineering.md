@@ -1,5 +1,3 @@
-# Engineering
-
 ## [[Frontend]]
 Webフロントエンド・モバイルアプリ・クライアントサイド
 
