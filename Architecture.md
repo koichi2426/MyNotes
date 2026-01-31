@@ -1,5 +1,3 @@
-# Architecture
-
 ソフトウェア設計論・構造・パターン
 
 ## [[ArchitecturePatterns]]

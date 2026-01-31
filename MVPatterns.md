@@ -1,5 +1,3 @@
-# MVPatterns
-
 MV*パターン
 
 - [[MVC (Model-View-Controller)]]
