@@ -1,5 +1,3 @@
-# Infrastructure
-
 クラウド・コンテナ・サーバーOS・仮想化
 
 ## [[CloudPlatforms]]
