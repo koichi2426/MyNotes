@@ -1,5 +1,3 @@
-# Creative
-
 ## [[UI_UX]]
 デザインツール・UI/UX
 
