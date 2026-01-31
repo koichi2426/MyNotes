@@ -1,5 +1,0 @@
-# GameDevelopment
-
-ゲーム
-
-- [[ゲーム]]
