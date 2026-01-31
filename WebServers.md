@@ -1,5 +1,3 @@
-Webサーバー
-
 ## [[Apache HTTP Server]]
 柔軟性と拡張性に優れたオープンソースのWebサーバー
 
