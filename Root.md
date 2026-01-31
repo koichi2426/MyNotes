@@ -1,5 +1,3 @@
-# Root
-
 ## [[Informatics]]
 Creating Value (価値を創る)
 領域: Theory, Engineering, Creative, Tools

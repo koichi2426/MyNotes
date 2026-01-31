@@ -1,5 +1,3 @@
-# Informatics
-
 ## [[Theory]]
 理論・研究・設計
 
