@@ -1,5 +1,3 @@
-# NetworkDiagnostics
-
 ネットワーク診断コマンド
 
 - [[pingコマンド]]
