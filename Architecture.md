@@ -11,6 +11,3 @@ MV*パターン
 
 ## [[DevelopmentProcesses]]
 開発手法・プロセス
-
-## [[ReferenceBooks]]
-参考書籍・リソース
