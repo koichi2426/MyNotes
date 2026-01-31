@@ -1,5 +1,3 @@
-# Economics
-
 ## [[Business]]
 マーケティング・決済・サービス
 
