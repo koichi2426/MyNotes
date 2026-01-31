@@ -625,4 +625,4 @@ Kanban：
 
 - [[CircleCI]]：CI/CDパイプラインの実装
 - [[GenerativeAIDevelopment]]：現代的な開発手法
-- [[DevelopmentProcesses]]：開発プロセス全般
+- [[Methodologies]]：開発プロセス全般

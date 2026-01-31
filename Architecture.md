@@ -9,5 +9,5 @@ MV*パターン
 ## [[DesignMethodologies]]
 設計手法・パラダイム
 
-## [[DevelopmentProcesses]]
+## [[Methodologies]]
 開発手法・プロセス

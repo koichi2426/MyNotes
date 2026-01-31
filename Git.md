@@ -602,4 +602,4 @@ git push -u origin feature/new-feature
 
 - [[VersionControl]]：バージョン管理全般
 - [[GitHubDesktop]]：GUI クライアント
-- [[DevelopmentProcesses]]：開発プロセス
+- [[Methodologies]]：開発プロセス
