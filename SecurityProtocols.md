@@ -1,5 +1,3 @@
-# SecurityProtocols
-
 セキュリティプロトコル
 
 ## [[https]]
@@ -17,5 +15,3 @@
 ## [[Firewall]]
 
 ネットワークセキュリティの基礎。不正アクセス防止、攻撃防御、アクセス制御。UFW（Uncomplicated Firewall）の詳細なコマンド集、ルール管理、ポート設定、ログ機能、実践的な設定例
-
-- [[FIDO認証]]
