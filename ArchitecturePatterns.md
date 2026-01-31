@@ -1,4 +1,4 @@
 - [[CleanArchitecture]]
+- [[HexagonalArchitecture]]
+- [[LayeredArchitecture]]
 - [[]]
-- [[クリーンアーキテクチャ]]
-- [[オニオンアーキテクチャ]]
