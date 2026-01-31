@@ -1,5 +1,3 @@
-# WebServers
-
 Webサーバー
 
 ## [[Apache HTTP Server]]
@@ -10,6 +8,3 @@ Webサーバー
 
 ## [[LiteSpeed]]
 Apache互換で高速かつ軽量な商用Webサーバー
-
-## [[サーバー]]
-サーバー関連技術
