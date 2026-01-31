@@ -1,5 +1,3 @@
-# Frontend
-
 Webフロントエンド・モバイルアプリ・クライアントサイド
 
 ## [[WebFrameworks]]
