@@ -541,9 +541,3 @@ long long count_patterns_optimized(int m, int n) {
 - 全探索の考え方
 - 計算量分析の重要性
 - 大規模問題への段階的アプローチ
-
-**関連トピック：**
-- [[Algorithm]]：アルゴリズム基礎
-- [[AlgorithmTheory]]：アルゴリズム理論
-- 動的計画法（DP）
-- グラフアルゴリズム
